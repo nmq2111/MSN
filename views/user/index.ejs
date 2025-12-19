@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/_head.ejs') %>
+
+  <body class="auth-bg">
+    <%- include('../partials/_pageLoader.ejs') %> <%-
+    include('../partials/_navbar.ejs') %>
+
+    <div class="page">
+      <div class="page-inner">
+        <!-- PROFILE CARD -->
+        <div class="profile-wrapper">
+          <section class="profile-card">
+            <div class="profile-card-header">
+              <span class="profile-dot"></span>
+              <span class="profile-title">Profile</span>
+            </div>
+
+            <div class="profile-card-body">
+              <div class="profile-avatar-col">
+                <div class="profile-avatar-box">
+                  <img
+                    src="<%= user.profile && user.profile.startsWith('http') ? user.profile : '/uploads/' + user.profile %>"
+                    alt="Profile Picture"
+                    class="profile-avatar"
+                  />
+                  <a
+                    href="/user/<%= user._id %>/changePic"
+                    class="avatar-change-btn"
+                    title="Change profile picture"
+                  >
+                    <i class="fa fa-camera"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="profile-info-col">
+                <div class="profile-info-row">
+                  <span class="profile-label">Name:</span>
+                  <span class="profile-value"><%= user.username %></span>
+                </div>
+
+                <div class="profile-info-row">
+                  <span class="profile-label">Email:</span>
+                  <span class="profile-value"><%= user.email %></span>
+                </div>
+
+                <div class="profile-info-row">
+                  <span class="profile-label">Phone Number:</span>
+                  <span class="profile-value"><%= user.contactNo %></span>
+                </div>
+
+                <div class="profile-info-row">
+                  <span class="profile-label">Type:</span>
+                  <span class="profile-value"><%= user.category %></span>
+                </div>
+
+                <div class="profile-actions">
+                  <a href="/Ads/<%= user._id %>/Ads" class="btn">My Ads</a>
+                  <a href="/user/<%= user._id %>/edit" class="btn"
+                    >Edit Profile</a
+                  >
+                  <a href="/user/<%= user._id %>/changePassword" class="btn"
+                    >Change Password</a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- DASHBOARD SECTION -->
+        <div class="dash-section">
+          <!-- SUMMARY CARD -->
+          <section class="dash-grid dash-grid-single">
+            <div class="dash-card dash-card--wide">
+              <div class="dash-card-head">
+                <div>
+                  <p class="dash-muted">My Ads Summary</p>
+                  <h2 class="dash-card-title">MSN Marketplace</h2>
+                </div>
+
+                <div class="dash-big-number">
+                  <span class="dash-muted">Total Value</span>
+                  <div>BD <%= totalValue || 0 %></div>
+                </div>
+              </div>
+
+              <div class="dash-actions">
+                <a
+                  class="dash-btn dash-btn--primary"
+                  href="/Ads/<%= user._id %>/new"
+                >
+                  <i class="fa fa-plus-circle"></i> Add Ad
+                </a>
+
+                <a
+                  class="dash-btn dash-btn--soft"
+                  href="/Ads/<%= user._id %>/Ads"
+                >
+                  <i class="fa fa-list"></i> View My Ads
+                </a>
+              </div>
+
+              <div class="dash-mini-cards">
+                <div class="mini">
+                  <p class="dash-muted">Total Ads</p>
+                  <h3><%= totalAds || 0 %></h3>
+                </div>
+
+                <div class="mini">
+                  <p class="dash-muted">Latest Ad</p>
+                  <h3><%= (myAds && myAds[0]) ? myAds[0].title : '—' %></h3>
+                </div>
+
+                <div class="mini">
+                  <p class="dash-muted">Last Date</p>
+                  <h3>
+                    <%= (myAds && myAds[0]) ? new
+                    Date(myAds[0].createdAt).toLocaleDateString() : '—' %>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- ✅ CLOSED -->
+
+          <!-- STATS ROW -->
+          <section class="dash-stats">
+            <div class="dash-card">
+              <p class="dash-muted">Phones</p>
+              <h2><%= categoryCounts?.phones || 0 %></h2>
+            </div>
+            <div class="dash-card">
+              <p class="dash-muted">Cars</p>
+              <h2><%= categoryCounts?.cars || 0 %></h2>
+            </div>
+            <div class="dash-card">
+              <p class="dash-muted">Laptop</p>
+              <h2><%= categoryCounts?.laptop || 0 %></h2>
+            </div>
+            <div class="dash-card">
+              <p class="dash-muted">Books</p>
+              <h2><%= categoryCounts?.books || 0 %></h2>
+            </div>
+            <div class="dash-card">
+              <p class="dash-muted">Spare parts</p>
+              <h2>
+                <%= (categoryCounts && categoryCounts['spare parts']) ?
+                categoryCounts['spare parts'] : 0 %>
+              </h2>
+            </div>
+          </section>
+
+          <!-- TABLE + ADMIN -->
+          <section class="dash-lower">
+            <div class="dash-card dash-card--table">
+              <div class="dash-card-head2">
+                <h3>Latest Ads</h3>
+                <a class="dash-link" href="/Ads/<%= user._id %>/Ads">See all</a>
+              </div>
+
+              <% if (myAds && myAds.length) { %>
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% myAds.slice(0, 6).forEach(ad => { %>
+                  <tr>
+                    <td class="td-title">
+                      <img class="td-img" src="/Ads/<%= ad.img %>" alt="" />
+                      <span><%= ad.title %></span>
+                    </td>
+                    <td><%= ad.category %></td>
+                    <td>BD <%= ad.price %></td>
+                    <td><%= new Date(ad.createdAt).toLocaleDateString() %></td>
+                    <td class="td-actions">
+                      <a
+                        class="icon-link"
+                        href="/Ads/<%= user._id %>/Ads/<%= ad._id %>/edit"
+                      >
+                        <i class="fa fa-edit"></i>
+                      </a>
+                      <form
+                        action="/Ads/<%= user._id %>/Ads/<%= ad._id %>?_method=DELETE"
+                        method="POST"
+                      >
+                        <button class="icon-link icon-btn-del" type="submit">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+              <% } else { %>
+              <p class="dash-muted">No ads yet. Create your first ad.</p>
+              <% } %>
+            </div>
+
+            <% if (adminStats) { %>
+            <div class="dash-card dash-card--admin">
+              <h3>Admin Overview</h3>
+              <div class="admin-grid">
+                <div class="mini">
+                  <p class="dash-muted">Total Users</p>
+                  <h3><%= adminStats.totalUsers %></h3>
+                </div>
+                <div class="mini">
+                  <p class="dash-muted">Total Ads</p>
+                  <h3><%= adminStats.totalAdsAll %></h3>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/_footer.ejs') %>
+  </body>
+</html>

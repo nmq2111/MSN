@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/_head.ejs') %>
+
+  <body>
+    <!-- Loader MUST be first in body -->
+    <%- include('./partials/_pageLoader') %> <%-
+    include('./partials/_navbar.ejs') %>
+
+    <!-- CLEAN GLOBAL LAYOUT -->
+    <div class="page">
+      <div class="page-inner">
+        <!-- HOME CENTER -->
+        <div class="home-center">
+          <div class="home-wrapper">
+            <!-- HERO CARD -->
+            <section class="card home-hero">
+              <h1 class="h1">
+                WHERE <span class="highlight">SELLERS</span><br />
+                MEET <span class="highlight">BUYERS</span>,<br />
+                INSTANTLY AND<br />
+                SEAMLESSLY
+              </h1>
+            </section>
+
+            <% if (user) { %>
+            <!-- CATEGORIES -->
+            <section class="home-categories">
+              <a href="/Ads/categories?category=cars" class="home-category">
+                <i class="fa-solid fa-car"></i>
+                <span>Cars</span>
+              </a>
+
+              <a href="/Ads/categories?category=phones" class="home-category">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>Phones</span>
+              </a>
+
+              <a href="/Ads/categories?category=laptop" class="home-category">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Laptop</span>
+              </a>
+
+              <a
+                href="/Ads/categories?category=spare%20parts"
+                class="home-category"
+              >
+                <i class="fa-solid fa-gear"></i>
+                <span>Spare Parts</span>
+              </a>
+
+              <a href="/Ads/categories?category=books" class="home-category">
+                <i class="fa-solid fa-book"></i>
+                <span>Books</span>
+              </a>
+
+              <a href="/Ads/categories?category=random" class="home-category">
+                <i class="fa-solid fa-shuffle"></i>
+                <span>Random</span>
+              </a>
+            </section>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/_footer.ejs') %>
+  </body>
+</html>

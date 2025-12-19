@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/_head.ejs') %>
+  </head>
+
+  <body class="auth-bg">
+    <%- include('../partials/_pageLoader.ejs') %> <%-
+    include('../partials/_navbar.ejs') %>
+
+    <h1 class="category-name category-title">
+      <%= ads?.[0]?.category || "Category" %>
+    </h1>
+
+    <% if (ads && ads.length) { %> <% ads.forEach(ad => { %>
+
+    <div class="ad-form-wrapper">
+      <!-- LEFT SIDE -->
+      <div class="ad-image-side">
+        <img
+          src="<%= ad.imgUrl ? ad.imgUrl : (ad.img ? '/Ads/' + ad.img : '') %>"
+          alt="<%= ad.title %>"
+          class="ad-preview-img"
+        />
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="ad-form-side">
+        <h1 class="h1-SignIn"><%= ad.title %></h1>
+
+        <div class="ad-detail">
+          <label class="type-name">Price</label>
+          <div class="ad-detail-box">BD <%= ad.price %></div>
+
+          <label class="type-name">Description</label>
+          <div class="ad-detail-box"><%= ad.description %></div>
+
+          <label class="type-name">Condition</label>
+          <div class="ad-detail-box"><%= ad.condition %></div>
+
+          <label class="type-name">Published by</label>
+          <div class="ad-detail-box"><%= ad.owner.username %></div>
+
+          <label class="type-name">Contact Number</label>
+          <div class="ad-detail-box"><%= ad.owner.contactNo %></div>
+
+          <a href="tel:<%= ad.owner.contactNo %>" class="input-submit">
+            <i class="fa fa-phone"></i> Direct Message
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <% }) %> <% } else { %>
+    <p class="ads-empty">No ads found in this category.</p>
+    <% } %> <%- include('../partials/_footer.ejs') %>
+  </body>
+</html>

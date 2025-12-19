@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/_head.ejs') %>
+
+  <body class="auth-bg">
+    <%- include('../partials/_pageLoader.ejs') %> <%-
+    include('../partials/_navbar.ejs') %>
+
+    <div class="page">
+      <div class="page-inner">
+        <div class="ad-form-wrapper">
+          <!-- LEFT SIDE: image -->
+          <div class="ad-image-side">
+            <img
+              src="/images/handshake.png"
+              alt="Ad Image"
+              class="ad-preview-img"
+            />
+          </div>
+
+          <!-- RIGHT SIDE: form -->
+          <div class="ad-form-side">
+            <h1 class="h1-SignIn">Add Ad</h1>
+
+            <form
+              action="/Ads/<%= user._id %>/Ads"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <label for="img">Image</label>
+              <input
+                class="input"
+                type="file"
+                name="img"
+                id="img"
+                accept="image/*"
+                required
+              />
+
+              <label for="title">Title</label>
+              <input
+                class="input"
+                type="text"
+                name="title"
+                id="title"
+                required
+              />
+
+              <label for="price">Price</label>
+              <input
+                class="input"
+                type="number"
+                name="price"
+                id="price"
+                required
+              />
+
+              <label for="description">Description</label>
+              <textarea
+                class="input"
+                name="description"
+                id="description"
+                required
+              ></textarea>
+
+              <label for="condition">Condition</label>
+              <select class="input" name="condition" id="condition" required>
+                <option value="new">New</option>
+                <option value="used">Used</option>
+              </select>
+
+              <label for="category">Category</label>
+              <select class="input" name="category" id="category" required>
+                <option value="phones">Phones</option>
+                <option value="cars">Cars</option>
+                <option value="books">Books</option>
+                <option value="spare parts">Spare Parts</option>
+                <option value="laptop">Laptop</option>
+                <option value="random">Random</option>
+              </select>
+
+              <button class="input-submit" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/_footer.ejs') %>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/_head.ejs') %>
+
+  <body class="auth-bg">
+    <%- include('../partials/_pageLoader.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <div class="page">
+      <div class="page-inner">
+        <div class="ad-form-wrapper">
+          <!-- LEFT SIDE -->
+          <div class="ad-image-side">
+            <div class="ad-image-box">
+              <img
+                src="<%= Ad.imgUrl ? Ad.imgUrl : '/images/placeholder.png' %>"
+                alt="Ad Image"
+                class="ad-preview-img"
+                id="previewImg"
+                referrerpolicy="no-referrer"
+              />
+
+              <button
+                type="button"
+                class="input-submit change-photo-btn"
+                onclick="document.getElementById('imgInput').click()"
+              >
+                Change Photo
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE -->
+          <div class="ad-form-side">
+            <h1 class="h1-SignIn">Editing: <%= Ad.title %></h1>
+
+            <form
+              action="/Ads/<%= user._id %>/Ads/<%= Ad._id %>?_method=PUT"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <input
+                id="imgInput"
+                type="file"
+                name="img"
+                accept="image/*"
+                hidden
+                onchange="previewSelectedImage(event)"
+              />
+
+              <label for="title">Title</label>
+              <input
+                class="input"
+                type="text"
+                name="title"
+                id="title"
+                value="<%= Ad.title %>"
+                required
+              />
+
+              <label for="price">Price</label>
+              <input
+                class="input"
+                type="number"
+                name="price"
+                id="price"
+                value="<%= Ad.price %>"
+                required
+              />
+
+              <label for="description">Description</label>
+              <textarea class="input" name="description" id="description" required><%= Ad.description %></textarea>
+
+              <label for="condition">Condition</label>
+              <select class="input" name="condition" id="condition" required>
+                <option value="new" <%= Ad.condition === "new" ? "selected" : "" %>>New</option>
+                <option value="used" <%= Ad.condition === "used" ? "selected" : "" %>>Used</option>
+              </select>
+
+              <label for="category">Category</label>
+              <select class="input" name="category" id="category" required>
+                <option value="phones" <%= Ad.category === "phones" ? "selected" : "" %>>Phones</option>
+                <option value="cars" <%= Ad.category === "cars" ? "selected" : "" %>>Cars</option>
+                <option value="books" <%= Ad.category === "books" ? "selected" : "" %>>Books</option>
+                <option value="spare parts" <%= Ad.category === "spare parts" ? "selected" : "" %>>Spare Parts</option>
+                <option value="laptop" <%= Ad.category === "laptop" ? "selected" : "" %>>Laptop</option>
+                <option value="random" <%= Ad.category === "random" ? "selected" : "" %>>Random</option>
+              </select>
+
+              <button class="input-submit" type="submit">Save Changes</button>
+            </form>
+
+            <a class="input-submit btn-link secondary-btn" href="/Ads/<%= user._id %>/Ads">
+              Back to Ads
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/_footer.ejs') %>
+
+    <script>
+      function previewSelectedImage(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        const img = document.getElementById("previewImg");
+        img.src = URL.createObjectURL(file);
+      }
+    </script>
+  </body>
+</html>

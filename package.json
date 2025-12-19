@@ -1,0 +1,37 @@
+{
+  "name": "msn-bahrain",
+  "version": "1.0.0",
+  "description": "- MSN Bahrain is an online advertising platform created to help users sell their products and facilitate connections between sellers and buyers. Users can post, browse, and manage advertisements in multiple categories, including Books, Electronics, and Car Supplies. The platform features user authentication, image upload capabilities, and ad filtering options.",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^1.41.0",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "method-override": "^3.0.0",
+    "mongo-store": "^0.0.2",
+    "mongoose": "^8.15.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahnazalqassab/MSN-BAHRAIN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shahnazalqassab/MSN-BAHRAIN/issues"
+  },
+  "homepage": "https://github.com/shahnazalqassab/MSN-BAHRAIN#readme"
+}

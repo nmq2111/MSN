@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/_head.ejs') %>
+  </head>
+
+  <body class="auth-bg">
+    <%- include('../partials/_navbar.ejs') %> <%-
+    include('../partials/_pageLoader.ejs') %>
+
+    <main class="profile-wrapper profile-wrapper--center">
+      <span class="auth-page-title">Sign Up</span>
+
+      <section class="profile-card" style="max-width: 520px; width: 100%">
+        <div class="profile-card-header">
+          <span class="profile-dot"></span>
+          <span class="profile-title">
+            <i class="fa fa-user-plus"></i>&nbsp; Sign Up
+          </span>
+        </div>
+
+        <form
+          action="/user/signUp"
+          method="POST"
+          autocomplete="off"
+          class="profile-form"
+        >
+          <div class="profile-form-row">
+            <label for="username"><i class="fa fa-user"></i> Username</label>
+            <input
+              class="input"
+              type="text"
+              id="username"
+              name="username"
+              required
+            />
+          </div>
+
+          <div class="profile-form-row">
+            <label for="password"><i class="fa fa-lock"></i> Password</label>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+
+          <div class="profile-form-row">
+            <label for="confirmPassword"
+              ><i class="fa fa-lock"></i> Confirm Password</label
+            >
+            <input
+              class="input"
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              required
+            />
+          </div>
+
+          <div class="profile-form-row">
+            <label for="contactNo"
+              ><i class="fa fa-phone"></i> Contact No.</label
+            >
+            <input
+              class="input"
+              type="tel"
+              id="contactNo"
+              name="contactNo"
+              pattern="[0-9]{8,15}"
+              required
+            />
+          </div>
+
+          <div class="profile-form-row">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input
+              class="input"
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+
+          <div class="profile-actions">
+            <button class="btn-primary" type="submit">
+              <i class="fa fa-user-plus"></i>&nbsp; Sign Up
+            </button>
+
+            <a href="/user/signIn" class="btn-outline">
+              <i class="fa fa-right-to-bracket"></i>&nbsp; Sign In
+            </a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <%- include('../partials/_footer.ejs') %>
+  </body>
+</html>

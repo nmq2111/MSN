@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/_head.ejs') %>
+  </head>
+
+  <body class="auth-bg">
+    <%- include('./partials/_navbar.ejs') %> <%-
+    include('./partials/_pageLoader.ejs') %>
+
+    <main class="page">
+      <div class="page-inner">
+        <h1 class="category-name">About Us</h1>
+
+        <section class="card about-card">
+          <div class="about-grid">
+            <!-- Left -->
+            <div class="about-left">
+              <h2 class="about-title">MSN Marketplace</h2>
+              <p class="muted about-sub">
+                A full-stack web application that digitalizes the old “AL
+                WASEET” periodical newspaper for advertisements, where sellers
+                meet buyers instantly and seamlessly with flexible categories so
+                you can post any item easily.
+              </p>
+
+              <div class="about-points">
+                <div class="about-point">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <div>
+                    <h4>Safe & Clear</h4>
+                    <p class="muted">
+                      Easy listings, clear info, and direct contact.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="about-point">
+                  <i class="fa-solid fa-bolt"></i>
+                  <div>
+                    <h4>Fast Posting</h4>
+                    <p class="muted">Create and manage ads in seconds.</p>
+                  </div>
+                </div>
+
+                <div class="about-point">
+                  <i class="fa-solid fa-chart-line"></i>
+                  <div>
+                    <h4>Smart Dashboard</h4>
+                    <p class="muted">
+                      Track your ads, categories, and activity.
+                    </p>
+                  </div>
+                </div>
+                <div class="about-point">
+                  <i class="fa-solid fa-shuffle"></i>
+                  <div>
+                    <h4>Flexible Categories</h4>
+                    <p class="muted">
+                      You can add any item and list it under the category that
+                      fits best — even random items in different categories.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right -->
+            <div class="about-right">
+              <div class="about-hero">
+                <i class="fa-solid fa-handshake about-hero-icon"></i>
+                <p class="muted">
+                  Buy & sell categories like <b>Cars</b>, <b>Phones</b>,
+                  <b>Laptops</b>, <b>Books</b>, and <b>Spare Parts</b>.
+                </p>
+              </div>
+
+              <div class="about-stats">
+                <div class="mini">
+                  <p class="dash-muted">Categories</p>
+                  <h3>6</h3>
+                </div>
+                <div class="mini">
+                  <p class="dash-muted">Easy Contact</p>
+                  <h3>Call</h3>
+                </div>
+                <div class="mini">
+                  <p class="dash-muted">Built For</p>
+                  <h3>Bahrain</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <%- include('./partials/_footer.ejs') %>
+  </body>
+</html>

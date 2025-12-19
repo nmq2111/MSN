@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/_head.ejs') %>
+  </head>
+
+  <body class="auth-bg">
+    <%- include('../partials/_navbar.ejs') %> <%-
+    include('../partials/_pageLoader.ejs') %>
+
+    <main class="profile-wrapper profile-wrapper--center">
+      <span class="auth-page-title">Sign In</span>
+      <section class="profile-card" style="max-width: 520px; width: 100%">
+        <div class="profile-card-header">
+          <span class="profile-dot"></span>
+          <span class="profile-title">Sign In</span>
+        </div>
+
+        <form action="/user/signIn" method="POST" class="profile-form">
+          <div class="profile-form-row">
+            <label for="username">Username</label>
+            <input
+              class="input"
+              type="text"
+              id="username"
+              name="username"
+              required
+            />
+          </div>
+
+          <div class="profile-form-row">
+            <label for="password">Password</label>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+
+          <div class="profile-actions">
+            <button class="btn-primary" type="submit">
+              <i class="fa fa-right-to-bracket"></i>&nbsp; Sign In
+            </button>
+
+            <a href="/user/signUp" class="btn-outline">
+              <i class="fa fa-user-plus"></i>&nbsp; Sign Up
+            </a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <%- include('../partials/_footer.ejs') %>
+  </body>
+</html>

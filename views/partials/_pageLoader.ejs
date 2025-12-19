@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MSN Bahrain</title>
+
+    <style>
+      #page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(135deg, #1965b2, #28a745);
+
+        opacity: 1;
+        pointer-events: all;
+        transition: opacity 2.5s ease;
+      }
+
+      #page-loader.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loader-logo {
+        width: 250px;
+        height: auto;
+        animation: logoPulse 0.5s ease-in-out infinite;
+        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.25));
+      }
+
+      @keyframes logoPulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.85;
+        }
+        50% {
+          transform: scale(1.08);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.85;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="page-loader">
+      <img src="/images/Logo.png" alt="MSN Logo" class="loader-logo" />
+    </div>
+
+    <script>
+      ;(function () {
+        const loader = document.getElementById('page-loader')
+
+        window.addEventListener('load', () => {
+          loader.classList.add('hide')
+        })
+
+        document.addEventListener('click', (e) => {
+          const link = e.target.closest('a')
+          if (!link) return
+
+          const href = link.getAttribute('href')
+          const target = link.getAttribute('target')
+
+          if (!href || href.startsWith('#') || target === '_blank') return
+          if (/^https?:\/\//i.test(href)) return
+
+          e.preventDefault()
+
+          loader.classList.remove('hide')
+
+          setTimeout(() => {
+            window.location.href = href
+          }, 450)
+        })
+      })()
+    </script>
+  </body>
+</html>
