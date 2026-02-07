@@ -65,7 +65,6 @@ app.get('/', (req, res) => {
 app.use('/user', userController)
 app.use('/Ads', adsController)
 
-// ✅ IMPORTANT: put this BEFORE routes you want protected (or inside routes)
 app.use(isSignedIn)
 
 app.listen(PORT, () => {

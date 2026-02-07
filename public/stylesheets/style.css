@@ -240,7 +240,6 @@ body {
 .category-name,
 .auth-page-title {
   font-size: clamp(2.2rem, 6vw, 4.2rem);
-  /* margin: 0 0 22px; */
   margin-top: calc(var(--nav-h) + 18px) !important;
   scroll-margin-top: calc(var(--nav-h) + 18px);
   text-align: center;
@@ -280,7 +279,6 @@ body {
 /* ===================== intl-tel-input match your .input style ===================== */
 /* wrapper should behave like a normal input */
 /* ===================== FINAL FIX: Contact No input ===================== */
-
 .profile-form-row .iti {
   width: 100%;
 }
@@ -289,11 +287,9 @@ body {
 .profile-form-row .iti input[type='tel'] {
   width: 100% !important;
   height: 42px !important;
-
-  padding: 10px 14px 10px 100px !important; /* space for flag + dial */
+  padding: 10px 14px 10px 100px !important;
   border-radius: 10px !important;
   border: 1px solid #cbd5e1 !important;
-
   background: #f8fafc !important;
   font-size: 0.95rem !important;
   box-sizing: border-box !important;
@@ -304,14 +300,11 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-
   height: 42px !important;
   display: flex;
   align-items: center;
-
   padding: 0 12px !important;
   border-right: 1px solid #cbd5e1 !important;
-
   background: transparent !important;
   border-radius: 10px 0 0 10px !important;
 }
@@ -341,6 +334,7 @@ body {
   margin-bottom: 16px;
   text-align: center;
 }
+
 .home-center {
   min-height: calc(100vh - var(--nav-h) - var(--footer-h));
   display: flex;
@@ -378,13 +372,11 @@ body {
   text-decoration: none;
   color: var(--primary);
   font-weight: 900;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 12px;
-
   box-shadow: 0 12px 30px rgba(15, 35, 95, 0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -440,7 +432,7 @@ body {
 .ad-top .ad-pill--cat {
   border: none !important;
   color: #fff !important;
-  background: #64748b !important; /* default */
+  background: #64748b !important;
 }
 
 /* books */
@@ -612,7 +604,6 @@ body {
   gap: 12px;
 }
 
-/* Profile responsive */
 @media (max-width: 900px) {
   .profile-card-body {
     grid-template-columns: 1fr;
@@ -654,7 +645,6 @@ body {
 }
 
 .dash-card-title {
-  color: var(--primary);
   margin: 4px 0 0;
   font-weight: 900;
   color: var(--text-main);
@@ -861,6 +851,7 @@ body {
   gap: 10px;
   margin-top: 10px;
 }
+
 .ad-actions .input-submit {
   flex: 1;
   padding: 10px 0;
@@ -919,10 +910,9 @@ body {
 }
 
 /* ===================== ADS: Wireframe horizontal card layout ===================== */
-
 .ads-grid {
   display: grid;
-  grid-template-columns: 1fr; /* one big card per row */
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 
@@ -1001,7 +991,6 @@ body {
   word-break: break-word;
 }
 
-/* bottom row */
 .ad-bottom {
   margin-top: auto;
   display: flex;
@@ -1023,7 +1012,6 @@ body {
   min-width: 180px;
 }
 
-/* actions stay on same line and same width */
 .ad-actions {
   display: flex;
   gap: 12px;
@@ -1036,7 +1024,6 @@ body {
   min-width: 140px;
 }
 
-/* RIGHT SIDE (IMAGE BOX) */
 .ad-right {
   flex: 0 0 42%;
   border-radius: 26px;
@@ -1053,7 +1040,6 @@ body {
   display: block;
 }
 
-/* responsive: stack on mobile */
 @media (max-width: 900px) {
   .ad-card--row {
     flex-direction: column-reverse;
@@ -1179,7 +1165,7 @@ body {
   margin-top: 6px;
   padding-left: 18px;
   font-size: 13px;
-  color: #9ca3af; /* gray */
+  color: #9ca3af;
 }
 
 .password-rules li {
@@ -1188,5 +1174,5 @@ body {
 }
 
 .password-rules li.valid {
-  color: #16a34a; /* green */
+  color: #16a34a;
 }
