@@ -7,11 +7,18 @@ const multer = require('multer')
 const User = require('../models/users')
 const Ads = require('../models/ads')
 
-// ✅ Cloudinary (make sure you created: config/cloudinary.js)
 const { cloudinary, userStorage } = require('../config/cloudinary')
 
-// ✅ Multer upload -> Cloudinary
+const isStrongPassword = require('../middleware/isStrongPassword')
+
 const upload = multer({ storage: userStorage })
+
+const rateLimit = require('express-rate-limit')
+const loginLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 10, // 10 attempts per 10 min
+  message: 'Too many login attempts. Try again later.'
+})
 
 // ======================= AUTH =======================
 
@@ -21,8 +28,10 @@ router.get('/signUp', (req, res) => {
 })
 
 // SIGN UP ROUTE
-router.post('/signUp', async (req, res) => {
+router.post('/signUp', isStrongPassword, async (req, res) => {
   try {
+    const SALT_ROUNDS = 12
+
     const userExists = await User.findOne({ username: req.body.username })
     if (userExists) return res.send('Username already taken')
 
@@ -30,25 +39,25 @@ router.post('/signUp', async (req, res) => {
       return res.send('Passwords do not match')
     }
 
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+    // phone must come from hidden input
+    if (!req.body.contactNo) {
+      return res.status(400).send('Please enter a valid phone number.')
+    }
 
-    // ✅ default profile image:
-    // Option A: keep local default file (Logo.png) and your EJS will handle it
-    // Option B: replace with a Cloudinary URL if you uploaded Logo there
+    const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS)
+
     const newUser = {
       username: req.body.username,
       password: hashedPassword,
-      contactNo: req.body.contactNo,
+      contactNo: req.body.contactNo, // e.g. +97333003300
       email: req.body.email,
-      profile: 'Logo.png', // or 'https://res.cloudinary.com/...'
-      profilePublicId: null,
-      category: req.body.category
+      profile: 'Logo.png',
+      profilePublicId: null
     }
 
     const user = await User.create(newUser)
 
     req.session.user = { username: user.username, _id: user._id }
-
     req.session.save(() => res.redirect('/'))
   } catch (error) {
     console.log(error)
@@ -62,7 +71,7 @@ router.get('/signIn', (req, res) => {
 })
 
 // SIGN IN ROUTE
-router.post('/signIn', async (req, res) => {
+router.post('/signIn', loginLimiter, async (req, res) => {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username })
     if (!userInDatabase) {
@@ -132,7 +141,6 @@ router.put('/:userId/user', async (req, res) => {
     if (submit === 'Update Profile') {
       currentUser.contactNo = req.body.contactNo
       currentUser.email = req.body.email
-      currentUser.category = req.body.category
 
       await currentUser.save()
       return res.redirect(`/user/${currentUser._id}/user`)

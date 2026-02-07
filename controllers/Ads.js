@@ -155,7 +155,7 @@ router.get('/categories', async (req, res) => {
   } else if (selectedCategory === 'spare parts') {
     res.render('categories/spareParts', { ads: filteredAds })
   } else if (selectedCategory === 'random') {
-    res.render('categories/other', { ads: filteredAds })
+    res.render('categories/random', { ads: filteredAds })
   }
 })
 

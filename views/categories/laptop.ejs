@@ -1,58 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../partials/_head.ejs') %>
-  </head>
+  <%- include('../partials/_head.ejs') %>
 
   <body class="auth-bg">
     <%- include('../partials/_pageLoader.ejs') %> <%-
     include('../partials/_navbar.ejs') %>
 
-    <h1 class="category-name category-title">
-      <%= ads?.[0]?.category || "Category" %>
-    </h1>
+    <div class="page">
+      <div class="page-inner">
+        <div class="container-ads">
+          <!-- HEADER -->
+          <div class="ads-header">
+            <h1 class="ads-title"><%= ads?.[0]?.category || 'Category' %></h1>
 
-    <% if (ads && ads.length) { %> <% ads.forEach(ad => { %>
+            <div class="ads-search">
+              <form method="GET">
+                <input
+                  type="text"
+                  name="q"
+                  value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+                  id="adsSearch"
+                  placeholder="Search"
+                />
+              </form>
+            </div>
+          </div>
 
-    <div class="ad-form-wrapper">
-      <!-- LEFT SIDE -->
-      <div class="ad-image-side">
-        <img
-          src="<%= ad.imgUrl ? ad.imgUrl : (ad.img ? '/Ads/' + ad.img : '') %>"
-          alt="<%= ad.title %>"
-          class="ad-preview-img"
-        />
-      </div>
+          <!-- GRID -->
+          <% if (ads && ads.length) { %>
+          <div class="ads-grid">
+            <% ads.forEach(ad => { %>
+            <article class="ad-card ad-card--row">
+              <!-- LEFT -->
+              <div class="ad-left">
+                <div>
+                  <span class="ad-pill--title"><%= ad.title %></span>
+                </div>
 
-      <!-- RIGHT SIDE -->
-      <div class="ad-form-side">
-        <h1 class="h1-SignIn"><%= ad.title %></h1>
+                <div class="ad-price">
+                  BD <%= Number(ad.price).toFixed(2) %>
+                </div>
 
-        <div class="ad-detail">
-          <label class="type-name">Price</label>
-          <div class="ad-detail-box">BD <%= ad.price %></div>
+                <div>
+                  <span
+                    class="ad-condition cond-<%= String(ad.condition).trim().toLowerCase() %>"
+                  >
+                    <%= ad.condition %>
+                  </span>
+                </div>
 
-          <label class="type-name">Description</label>
-          <div class="ad-detail-box"><%= ad.description %></div>
+                <div class="ad-desc-box">
+                  <div class="ad-desc-label">Description</div>
+                  <div class="ad-desc-text"><%= ad.description %></div>
+                </div>
 
-          <label class="type-name">Condition</label>
-          <div class="ad-detail-box"><%= ad.condition %></div>
+                <!-- EXTRA INFO (index only) -->
+                <div class="ad-desc-box">
+                  <div class="ad-desc-label">Published by</div>
+                  <div class="ad-desc-text"><%= ad.owner.username %></div>
+                </div>
 
-          <label class="type-name">Published by</label>
-          <div class="ad-detail-box"><%= ad.owner.username %></div>
+                <div class="ad-bottom">
+                  <div class="ad-actions">
+                    <a href="tel:<%= ad.owner.contactNo %>" class="btn-primary">
+                      <i class="fa fa-phone"></i> Call Seller
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-          <label class="type-name">Contact Number</label>
-          <div class="ad-detail-box"><%= ad.owner.contactNo %></div>
-
-          <a href="tel:<%= ad.owner.contactNo %>" class="input-submit">
-            <i class="fa fa-phone"></i> Direct Message
-          </a>
+              <!-- RIGHT (IMAGE) -->
+              <div class="ad-right">
+                <img
+                  src="<%= ad.imgUrl || '/images/handshake.png' %>"
+                  alt="<%= ad.title %>"
+                  class="ad-image"
+                />
+              </div>
+            </article>
+            <% }) %>
+          </div>
+          <% } else { %>
+          <p class="ads-empty">No ads found in this category.</p>
+          <% } %>
         </div>
       </div>
     </div>
 
-    <% }) %> <% } else { %>
-    <p class="ads-empty">No ads found in this category.</p>
-    <% } %> <%- include('../partials/_footer.ejs') %>
+    <%- include('../partials/_footer.ejs') %>
   </body>
 </html>

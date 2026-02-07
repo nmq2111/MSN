@@ -52,6 +52,9 @@
                 type="number"
                 name="price"
                 id="price"
+                step="0.01"
+                min="0"
+                placeholder="e.g. 99.99 BD"
                 required
               />
 
@@ -79,7 +82,11 @@
                 <option value="random">Random</option>
               </select>
 
-              <button class="input-submit" type="submit">Submit</button>
+              <button class="btn-primary" type="submit">Submit</button>
+
+              <a class="btn-ghost" href="/Ads/<%= user._id %>/Ads">
+                Back to Ads
+              </a>
             </form>
           </div>
         </div>

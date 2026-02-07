@@ -1,37 +1,30 @@
 const express = require('express')
-const bcrypt = require('bcrypt')
-const dotenv = require('dotenv').config()
-const ejs = require('ejs')
-
-const app = express()
-const PORT = process.env.PORT || 3000
+require('dotenv').config()
 const path = require('path')
 
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
 const expressSession = require('express-session')
-const cloudinary = require('./config/cloudinary')
-
 const MongoStore = require('connect-mongo')
 
 const passUserToView = require('./middleware/pass-user-to-view')
 const isSignedIn = require('./middleware/is-signed-in')
-const upload = require('./middleware/upload')
+const isStrongPassword = require('./middleware/isStrongPassword')
 
 // Controllers
 const userController = require('./controllers/user')
 const adsController = require('./controllers/Ads')
+
+const app = express()
+const PORT = process.env.PORT || 3000
 
 // View Engine Setup
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI, {
-  // useNewUrlParser: true,
-  //useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB: ${mongoose.connection.name}`)
 })
@@ -39,19 +32,24 @@ mongoose.connection.on('connected', () => {
 // Middleware
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
-
+app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
+
 app.use(
   expressSession({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'dev_secret_change_me',
     resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI
-    })
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+    cookie: {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production'
+    }
   })
 )
+
 app.use(passUserToView)
 
 // Routes
@@ -63,8 +61,11 @@ app.get('/', (req, res) => {
   }
 })
 
+// routes
 app.use('/user', userController)
 app.use('/Ads', adsController)
+
+// ✅ IMPORTANT: put this BEFORE routes you want protected (or inside routes)
 app.use(isSignedIn)
 
 app.listen(PORT, () => {

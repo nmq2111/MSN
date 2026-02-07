@@ -13,136 +13,208 @@
           <span class="profile-dot"></span>
 
           <% if (checkVar === 1) { %>
-            <span class="profile-title">Change Password</span>
+          <span class="profile-title">Change Password</span>
           <% } else if (checkVar === 0) { %>
-            <span class="profile-title">Edit Profile</span>
+          <span class="profile-title">Edit Profile</span>
           <% } else if (checkVar === 2) { %>
-            <span class="profile-title">Update Profile Picture</span>
+          <span class="profile-title">Update Profile Picture</span>
           <% } %>
         </div>
 
         <% if (checkVar === 1) { %>
-          <!-- CHANGE PASSWORD -->
-          <div class="profile-card-body">
-            <div class="profile-avatar-col">
-              <div class="profile-avatar-box">
-                <img src="<%= user.profile && user.profile.startsWith('http') ? user.profile : '/uploads/' + user.profile %>" alt="Profile Picture" class="profile-avatar" />
-              </div>
-            </div>
-
-            <div class="profile-info-col">
-              <form class="profile-form" action="/user/<%= user._id %>/changePassword?_method=PUT" method="POST">
-                <div class="profile-form-row">
-                  <label for="username">Username</label>
-                  <input class="input" type="text" id="username" value="<%= user.username %>" disabled />
-                </div>
-
-                <div class="profile-form-row">
-                  <label for="currentPassword">Current Password</label>
-                  <input class="input" type="password" id="currentPassword" name="currentPassword" required />
-                </div>
-
-                <div class="profile-form-row">
-                  <label for="newPassword">New Password</label>
-                  <input class="input" type="password" id="newPassword" name="newPassword" required />
-                </div>
-
-                <div class="profile-form-row">
-                  <label for="confirmPassword">Confirm Password</label>
-                  <input class="input" type="password" id="confirmPassword" name="confirmPassword" required />
-                </div>
-
-                <div class="profile-actions">
-                  <button class="btn-primary" type="submit">
-                    <i class="fa fa-save"></i> Change Password
-                  </button>
-
-                  <a href="/user/<%= user._id %>/dashboard" class="btn-ghost">
-                    <i class="fa fa-times"></i> Cancel
-                  </a>
-                </div>
-              </form>
+        <!-- CHANGE PASSWORD -->
+        <div class="profile-card-body">
+          <div class="profile-avatar-col">
+            <div class="profile-avatar-box">
+              <img
+                src="<%= user.profile && user.profile.startsWith('http') ? user.profile : '/uploads/' + user.profile %>"
+                alt="Profile Picture"
+                class="profile-avatar"
+              />
             </div>
           </div>
 
-        <% } else if (checkVar === 0) { %>
-          <!-- EDIT PROFILE -->
-          <div class="profile-card-body">
-            <div class="profile-avatar-col">
-              <div class="profile-avatar-box">
-                <img src="/uploads/<%= user.profile %>" alt="Profile Picture" class="profile-avatar" />
-                <a href="/user/<%= user._id %>/changePic" class="avatar-change-btn" title="Change profile picture">
-                  <i class="fa fa-camera"></i>
+          <div class="profile-info-col">
+            <form
+              class="profile-form"
+              action="/user/<%= user._id %>/changePassword?_method=PUT"
+              method="POST"
+            >
+              <div class="profile-form-row">
+                <label for="username">Username</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="username"
+                  value="<%= user.username %>"
+                  disabled
+                />
+              </div>
+
+              <div class="profile-form-row">
+                <label for="currentPassword">Current Password</label>
+                <input
+                  class="input"
+                  type="password"
+                  id="currentPassword"
+                  name="currentPassword"
+                  required
+                />
+              </div>
+
+              <div class="profile-form-row">
+                <label for="newPassword">New Password</label>
+                <input
+                  class="input"
+                  type="password"
+                  id="newPassword"
+                  name="newPassword"
+                  required
+                />
+              </div>
+
+              <div class="profile-form-row">
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                  class="input"
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  required
+                />
+              </div>
+
+              <div class="profile-actions">
+                <button class="btn-primary" type="submit">
+                  <i class="fa fa-save"></i> Change Password
+                </button>
+
+                <a href="/user/<%= user._id %>/dashboard" class="btn-ghost">
+                  <i class="fa fa-times"></i> Cancel
                 </a>
               </div>
-            </div>
+            </form>
+          </div>
+        </div>
 
-            <div class="profile-info-col">
-              <form class="profile-form" action="/user/<%= user._id %>/edit?_method=PUT" method="POST">
-                <div class="profile-form-row">
-                  <label for="username">Username</label>
-                  <input class="input" type="text" id="username" value="<%= user.username %>" disabled />
-                </div>
-
-                <div class="profile-form-row">
-                  <label for="email">Email</label>
-                  <input class="input" type="email" id="email" name="email" value="<%= user.email %>" required />
-                </div>
-
-                <div class="profile-form-row">
-                  <label for="contactNo">Phone Number</label>
-                  <input class="input" type="number" id="contactNo" name="contactNo" value="<%= user.contactNo %>" required />
-                </div>
-
-                <div class="profile-form-row">
-                  <label for="category">Type</label>
-                  <select class="input" name="category" id="category" required>
-                    <option value="Seller" <%= user.category === 'Seller' ? 'selected' : '' %>>Seller</option>
-                    <option value="Buyer"  <%= user.category === 'Buyer'  ? 'selected' : '' %>>Buyer</option>
-                  </select>
-                </div>
-
-                <div class="profile-actions">
-                  <button class="btn-primary" type="submit">
-                    <i class="fa fa-save"></i> Update Profile
-                  </button>
-
-                  <a href="/user/<%= user._id %>/dashboard" class="btn-ghost">
-                    <i class="fa fa-times"></i> Cancel
-                  </a>
-                </div>
-              </form>
+        <% } else if (checkVar === 0) { %>
+        <!-- EDIT PROFILE -->
+        <div class="profile-card-body">
+          <div class="profile-avatar-col">
+            <div class="profile-avatar-box">
+              <img
+                src="/uploads/<%= user.profile %>"
+                alt="Profile Picture"
+                class="profile-avatar"
+              />
+              <a
+                href="/user/<%= user._id %>/changePic"
+                class="avatar-change-btn"
+                title="Change profile picture"
+              >
+                <i class="fa fa-camera"></i>
+              </a>
             </div>
           </div>
+
+          <div class="profile-info-col">
+            <form
+              class="profile-form"
+              action="/user/<%= user._id %>/edit?_method=PUT"
+              method="POST"
+            >
+              <div class="profile-form-row">
+                <label for="username">Username</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="username"
+                  value="<%= user.username %>"
+                  disabled
+                />
+              </div>
+
+              <div class="profile-form-row">
+                <label for="email">Email</label>
+                <input
+                  class="input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  value="<%= user.email %>"
+                  required
+                />
+              </div>
+
+              <div class="profile-form-row">
+                <label for="contactNo">Phone Number</label>
+                <input
+                  class="input"
+                  type="number"
+                  id="contactNo"
+                  name="contactNo"
+                  value="<%= user.contactNo %>"
+                  required
+                />
+              </div>
+
+              <div class="profile-actions">
+                <button class="btn-primary" type="submit">
+                  <i class="fa fa-save"></i> Update Profile
+                </button>
+
+                <a href="/user/<%= user._id %>/dashboard" class="btn-ghost">
+                  <i class="fa fa-times"></i> Cancel
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
 
         <% } else if (checkVar === 2) { %>
-          <!-- UPDATE PICTURE -->
-          <div class="profile-card-body">
-            <div class="profile-avatar-col">
-              <div class="profile-avatar-box">
-                <img src="/uploads/<%= user.profile %>" alt="Profile" class="profile-avatar" />
-              </div>
-            </div>
-
-            <div class="profile-info-col">
-              <form class="profile-form" action="/user/<%= user._id %>/changePic" method="POST" enctype="multipart/form-data">
-                <div class="profile-form-row">
-                  <label for="profile">Profile Image</label>
-                  <input class="input" type="file" name="profile" id="profile" accept="image/*" required />
-                </div>
-
-                <div class="profile-actions">
-                  <button class="btn-primary" type="submit">
-                    <i class="fa fa-save"></i> Update Picture
-                  </button>
-
-                  <a href="/user/<%= user._id %>/dashboard" class="btn-ghost">
-                    <i class="fa fa-times"></i> Cancel
-                  </a>
-                </div>
-              </form>
+        <!-- UPDATE PICTURE -->
+        <div class="profile-card-body">
+          <div class="profile-avatar-col">
+            <div class="profile-avatar-box">
+              <img
+                src="/uploads/<%= user.profile %>"
+                alt="Profile"
+                class="profile-avatar"
+              />
             </div>
           </div>
+
+          <div class="profile-info-col">
+            <form
+              class="profile-form"
+              action="/user/<%= user._id %>/changePic"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <div class="profile-form-row">
+                <label for="profile">Profile Image</label>
+                <input
+                  class="input"
+                  type="file"
+                  name="profile"
+                  id="profile"
+                  accept="image/*"
+                  required
+                />
+              </div>
+
+              <div class="profile-actions">
+                <button class="btn-primary" type="submit">
+                  <i class="fa fa-save"></i> Update Picture
+                </button>
+
+                <a href="/user/<%= user._id %>/dashboard" class="btn-ghost">
+                  <i class="fa fa-times"></i> Cancel
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
         <% } %>
       </section>
     </main>

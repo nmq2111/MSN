@@ -196,7 +196,7 @@ body {
 
 .btn-ghost {
   background: #f9fafb;
-  color: #334155;
+  color: var(--primary);
   border-color: #e5e7eb;
 }
 
@@ -208,7 +208,7 @@ body {
 .btn-red {
   background: #ba1b1b;
   color: #fff;
-  border-color: #7f1d1d;
+  border-color: #ba1b1b;
 }
 
 .btn-red:hover {
@@ -240,7 +240,9 @@ body {
 .category-name,
 .auth-page-title {
   font-size: clamp(2.2rem, 6vw, 4.2rem);
-  margin: 0 0 22px;
+  /* margin: 0 0 22px; */
+  margin-top: calc(var(--nav-h) + 18px) !important;
+  scroll-margin-top: calc(var(--nav-h) + 18px);
   text-align: center;
   color: #fff;
   font-weight: 900;
@@ -249,6 +251,82 @@ body {
 .category-title {
   margin-top: 90px;
   text-align: center;
+}
+
+/* ===================== Sign Up row (button + login link) ===================== */
+.signup-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.login-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.login-text a {
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== intl-tel-input match your .input style ===================== */
+/* wrapper should behave like a normal input */
+/* ===================== FINAL FIX: Contact No input ===================== */
+
+.profile-form-row .iti {
+  width: 100%;
+}
+
+/* Main phone input */
+.profile-form-row .iti input[type='tel'] {
+  width: 100% !important;
+  height: 42px !important;
+
+  padding: 10px 14px 10px 100px !important; /* space for flag + dial */
+  border-radius: 10px !important;
+  border: 1px solid #cbd5e1 !important;
+
+  background: #f8fafc !important;
+  font-size: 0.95rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Flag + dial code area */
+.profile-form-row .iti__selected-country {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  height: 42px !important;
+  display: flex;
+  align-items: center;
+
+  padding: 0 12px !important;
+  border-right: 1px solid #cbd5e1 !important;
+
+  background: transparent !important;
+  border-radius: 10px 0 0 10px !important;
+}
+
+/* Dial code text */
+.profile-form-row .iti__selected-dial-code {
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Focus state */
+.profile-form-row .iti input[type='tel']:focus {
+  outline: none !important;
+  border-color: var(--accent) !important;
+  background: #fff !important;
 }
 
 /* ==========================================================================
@@ -320,6 +398,96 @@ body {
   font-size: 2.6rem;
   color: var(--secondary);
   line-height: 1;
+}
+
+/* ===================== Category colored pills ===================== */
+.ad-pill--cat {
+  border: none;
+  color: #fff;
+}
+
+/* books */
+.cat-books {
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+}
+
+/* phones */
+.cat-phones {
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+}
+
+/* cars */
+.cat-cars {
+  background: linear-gradient(90deg, #0f172a, #475569);
+}
+
+/* spare parts */
+.cat-spare-parts {
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+}
+
+/* laptop */
+.cat-laptop {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+/* random */
+.cat-random {
+  background: linear-gradient(90deg, #64748b, #94a3b8);
+}
+
+/* ===================== CATEGORY COLORS (force override) ===================== */
+.ad-top .ad-pill--cat {
+  border: none !important;
+  color: #fff !important;
+  background: #64748b !important; /* default */
+}
+
+/* books */
+.ad-top .cat-books {
+  background: linear-gradient(90deg, #f7ae55, #f7cf55) !important;
+}
+
+/* phones */
+.ad-top .cat-phones {
+  background: linear-gradient(90deg, #2563eb, #06b6d4) !important;
+}
+
+/* cars */
+.ad-top .cat-cars {
+  background: linear-gradient(90deg, #d61b14, #f54a44) !important;
+}
+
+/* spare parts (note the dash) */
+.ad-top .cat-spare-parts {
+  background: linear-gradient(90deg, #f59e0b, #ef4444) !important;
+}
+
+/* laptop */
+.ad-top .cat-laptop {
+  background: linear-gradient(90deg, #22c55e, #16a34a) !important;
+}
+
+/* random */
+.ad-top .cat-random {
+  background: linear-gradient(90deg, #64748b, #94a3b8) !important;
+}
+
+/* ===================== CONDITION COLORS ===================== */
+.ad-condition {
+  border: none !important;
+  color: #fff !important;
+  font-weight: 900;
+}
+
+/* new = green */
+.ad-condition.cond-new {
+  background: linear-gradient(90deg, #22c55e, #16a34a) !important;
+}
+
+/* used = gray */
+.ad-condition.cond-used {
+  background: linear-gradient(90deg, #64748b, #94a3b8) !important;
 }
 
 @media (max-width: 900px) {
@@ -750,6 +918,165 @@ body {
   margin-bottom: 12px;
 }
 
+/* ===================== ADS: Wireframe horizontal card layout ===================== */
+
+.ads-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* one big card per row */
+  gap: 18px;
+}
+
+.ad-card--row {
+  display: flex;
+  gap: 22px;
+  padding: 18px;
+  align-items: stretch;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+/* LEFT SIDE */
+.ad-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* top pills */
+.ad-top {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ad-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.ad-pill--title {
+  flex: 1;
+  min-width: 220px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #0b1220;
+}
+
+/* big price like sketch */
+.ad-price {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #0b1220;
+}
+
+/* description box */
+.ad-desc-box {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 16px;
+  min-height: 110px;
+}
+
+.ad-desc-label {
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.ad-desc-text {
+  color: #374151;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* bottom row */
+.ad-bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ad-condition {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  font-weight: 900;
+  color: #0f172a;
+  min-width: 180px;
+}
+
+/* actions stay on same line and same width */
+.ad-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 0;
+}
+
+.ad-actions .btn-primary,
+.ad-actions .btn-red {
+  height: 42px;
+  min-width: 140px;
+}
+
+/* RIGHT SIDE (IMAGE BOX) */
+.ad-right {
+  flex: 0 0 42%;
+  border-radius: 26px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: #f8fafc;
+  overflow: hidden;
+  display: flex;
+}
+
+.ad-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* responsive: stack on mobile */
+@media (max-width: 900px) {
+  .ad-card--row {
+    flex-direction: column-reverse;
+  }
+
+  .ad-right {
+    flex: 0 0 auto;
+    height: 220px;
+  }
+
+  .ad-actions .btn-primary,
+  .ad-actions .btn-red {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ad-condition {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 900px) {
   .ad-form-wrapper {
     flex-direction: column;
@@ -846,4 +1173,20 @@ body {
   .about-stats {
     grid-template-columns: 1fr;
   }
+}
+
+.password-rules {
+  margin-top: 6px;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #9ca3af; /* gray */
+}
+
+.password-rules li {
+  margin: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.password-rules li.valid {
+  color: #16a34a; /* green */
 }
