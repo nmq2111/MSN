@@ -11,7 +11,7 @@ const AdsSchema = new mongoose.Schema(
       enum: ['books', 'phones', 'cars', 'spare parts', 'laptop', 'random']
     },
     owner: {
-      type: mongoose.Schema.Types.ObjectId, // LINKING THIS FIELD TO ANOTHER MODEL
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },
     imgUrl: { type: String, default: '' },

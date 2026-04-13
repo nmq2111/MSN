@@ -9,7 +9,6 @@
     <div class="page">
       <div class="page-inner">
         <div class="container-ads">
-          <!-- HEADER -->
           <div class="ads-header">
             <h1 class="ads-title"><%= ads?.[0]?.category || 'Category' %></h1>
 
@@ -26,12 +25,10 @@
             </div>
           </div>
 
-          <!-- GRID -->
           <% if (ads && ads.length) { %>
           <div class="ads-grid">
             <% ads.forEach(ad => { %>
             <article class="ad-card ad-card--row">
-              <!-- LEFT -->
               <div class="ad-left">
                 <div>
                   <span class="ad-pill--title"><%= ad.title %></span>
@@ -54,7 +51,6 @@
                   <div class="ad-desc-text"><%= ad.description %></div>
                 </div>
 
-                <!-- EXTRA INFO (index only) -->
                 <div class="ad-desc-box">
                   <div class="ad-desc-label">Published by</div>
                   <div class="ad-desc-text"><%= ad.owner.username %></div>
@@ -69,7 +65,6 @@
                 </div>
               </div>
 
-              <!-- RIGHT (IMAGE) -->
               <div class="ad-right">
                 <img
                   src="<%= ad.imgUrl || '/images/handshake.png' %>"
@@ -87,6 +82,5 @@
       </div>
     </div>
 
-    <!-- <%- include('../partials/_footer.ejs') %> -->
   </body>
 </html>

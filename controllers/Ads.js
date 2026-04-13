@@ -1,6 +1,5 @@
 const express = require('express')
 const User = require('../models/users.js')
-// const multer = require('multer')
 const Ads = require('../models/ads.js')
 
 const router = express.Router()
@@ -9,7 +8,6 @@ const multer = require('multer')
 const { cloudinary, adStorage } = require('../config/cloudinary')
 const upload = multer({ storage: adStorage })
 
-//get:index
 router.get('/:userId/Ads', async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id)
@@ -45,13 +43,11 @@ router.get('/:userId/Ads', async (req, res) => {
   }
 })
 
-//:get:new
 router.get('/:userId/new', async (req, res) => {
   const currentUser = await User.findById(req.params.userId)
   res.render('Ads/new.ejs', { user: currentUser })
 })
 
-//:get:Create
 router.post('/:userId/Ads', upload.single('img'), async (req, res) => {
   const currentUser = await User.findById(req.session.user._id)
 
@@ -71,14 +67,12 @@ router.post('/:userId/Ads', upload.single('img'), async (req, res) => {
   res.redirect(`/Ads/${currentUser._id}/Ads`)
 })
 
-//get:edit
 router.get('/:userId/Ads/:adId/edit', async (req, res) => {
   const selectedAd = await Ads.findById(req.params.adId)
   const currentUser = await User.findById(req.params.userId)
   res.render('Ads/edit.ejs', { Ad: selectedAd, user: currentUser })
 })
 
-// Update Ad
 router.put('/:userId/Ads/:adId', upload.single('img'), async (req, res) => {
   try {
     const editedAd = await Ads.findById(req.params.adId)
@@ -108,12 +102,10 @@ router.put('/:userId/Ads/:adId', upload.single('img'), async (req, res) => {
 
     res.redirect(`/Ads/${req.session.user._id}/Ads`)
   } catch (error) {
-    console.log(error)
     res.redirect('/')
   }
 })
 
-// Delete Ad
 router.delete('/:userId/Ads/:adId', async (req, res) => {
   try {
     const selectedAd = await Ads.findById(req.params.adId)
@@ -135,7 +127,6 @@ router.delete('/:userId/Ads/:adId', async (req, res) => {
   }
 })
 
-//category
 router.get('/categories', async (req, res) => {
   const selectedCategory = req.query.category
 
@@ -143,7 +134,6 @@ router.get('/categories', async (req, res) => {
 
   const filteredAds = allAds.filter((ad) => ad.category === selectedCategory)
 
-  //.populate('owner')
   if (selectedCategory === 'phones') {
     res.render('categories/phone', { ads: filteredAds })
   } else if (selectedCategory === 'cars') {

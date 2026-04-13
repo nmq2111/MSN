@@ -1,12 +1,6 @@
-/* ==========================================================================
-   1) FONTS & ICONS
-   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-/* ==========================================================================
-   2) CSS VARIABLES (DESIGN SYSTEM)
-   ========================================================================== */
 :root {
   --primary: #1965b2;
   --secondary: #28a745;
@@ -30,9 +24,6 @@
   --gap: 16px;
 }
 
-/* ==========================================================================
-   3) RESET & BASE
-   ========================================================================== */
 *,
 *::before,
 *::after {
@@ -52,10 +43,6 @@ body {
   min-height: 100vh;
 }
 
-/* ==========================================================================
-   4) GLOBAL PAGE WRAPPER
-   - Use <main class="page"><div class="page-inner">...</div></main>
-   ========================================================================== */
 .page {
   min-height: 100vh;
   padding-top: calc(var(--nav-h) + 24px);
@@ -70,9 +57,6 @@ body {
   padding: 0 20px;
 }
 
-/* ==========================================================================
-   5) NAVBAR
-   ========================================================================== */
 .navbar {
   position: fixed;
   top: 0;
@@ -115,9 +99,6 @@ body {
   gap: 6px;
 }
 
-/* ==========================================================================
-   6) FOOTER
-   ========================================================================== */
 .footer {
   position: fixed;
   bottom: 0;
@@ -133,9 +114,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* ==========================================================================
-   7) SHARED UI (CARDS / TEXT)
-   ========================================================================== */
 .card {
   background: rgba(255, 255, 255, 0.97);
   border-radius: var(--radius-lg);
@@ -152,9 +130,6 @@ body {
   color: var(--secondary);
 }
 
-/* ==========================================================================
-   8) BUTTONS (ONE SYSTEM)
-   ========================================================================== */
 .btn-primary,
 .btn-outline,
 .btn-ghost,
@@ -170,7 +145,9 @@ body {
   justify-content: center;
   gap: 8px;
   border: 1px solid transparent;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .btn-primary {
@@ -216,9 +193,6 @@ body {
   box-shadow: 0 8px 22px rgba(185, 28, 28, 0.25);
 }
 
-/* ==========================================================================
-   9) FORMS (INPUTS)
-   ========================================================================== */
 .input {
   width: 100%;
   padding: 10px 14px;
@@ -234,9 +208,6 @@ body {
   background: #fff;
 }
 
-/* ==========================================================================
-   10) PAGE TITLES (TOP WHITE TEXT)
-   ========================================================================== */
 .category-name,
 .auth-page-title {
   font-size: clamp(2.2rem, 6vw, 4.2rem);
@@ -252,7 +223,6 @@ body {
   text-align: center;
 }
 
-/* ===================== Sign Up row (button + login link) ===================== */
 .signup-actions {
   display: flex;
   align-items: center;
@@ -276,14 +246,10 @@ body {
   text-decoration: underline;
 }
 
-/* ===================== intl-tel-input match your .input style ===================== */
-/* wrapper should behave like a normal input */
-/* ===================== FINAL FIX: Contact No input ===================== */
 .profile-form-row .iti {
   width: 100%;
 }
 
-/* Main phone input */
 .profile-form-row .iti input[type='tel'] {
   width: 100% !important;
   height: 42px !important;
@@ -295,7 +261,6 @@ body {
   box-sizing: border-box !important;
 }
 
-/* Flag + dial code area */
 .profile-form-row .iti__selected-country {
   position: absolute;
   left: 0;
@@ -309,22 +274,17 @@ body {
   border-radius: 10px 0 0 10px !important;
 }
 
-/* Dial code text */
 .profile-form-row .iti__selected-dial-code {
   font-weight: 600;
   color: #475569;
 }
 
-/* Focus state */
 .profile-form-row .iti input[type='tel']:focus {
   outline: none !important;
   border-color: var(--accent) !important;
   background: #fff !important;
 }
 
-/* ==========================================================================
-   11) HOME
-   ========================================================================== */
 .h1 {
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 2.2rem;
@@ -378,7 +338,9 @@ body {
   justify-content: center;
   gap: 12px;
   box-shadow: 0 12px 30px rgba(15, 35, 95, 0.15);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .home-category:hover {
@@ -392,92 +354,75 @@ body {
   line-height: 1;
 }
 
-/* ===================== Category colored pills ===================== */
 .ad-pill--cat {
   border: none;
   color: #fff;
 }
 
-/* books */
 .cat-books {
   background: linear-gradient(90deg, #7c3aed, #a855f7);
 }
 
-/* phones */
 .cat-phones {
   background: linear-gradient(90deg, #2563eb, #06b6d4);
 }
 
-/* cars */
 .cat-cars {
   background: linear-gradient(90deg, #0f172a, #475569);
 }
 
-/* spare parts */
 .cat-spare-parts {
   background: linear-gradient(90deg, #f59e0b, #ef4444);
 }
 
-/* laptop */
 .cat-laptop {
   background: linear-gradient(90deg, #22c55e, #16a34a);
 }
 
-/* random */
 .cat-random {
   background: linear-gradient(90deg, #64748b, #94a3b8);
 }
 
-/* ===================== CATEGORY COLORS (force override) ===================== */
 .ad-top .ad-pill--cat {
   border: none !important;
   color: #fff !important;
   background: #64748b !important;
 }
 
-/* books */
 .ad-top .cat-books {
   background: linear-gradient(90deg, #f7ae55, #f7cf55) !important;
 }
 
-/* phones */
 .ad-top .cat-phones {
   background: linear-gradient(90deg, #2563eb, #06b6d4) !important;
 }
 
-/* cars */
 .ad-top .cat-cars {
   background: linear-gradient(90deg, #d61b14, #f54a44) !important;
 }
 
-/* spare parts (note the dash) */
 .ad-top .cat-spare-parts {
   background: linear-gradient(90deg, #f59e0b, #ef4444) !important;
 }
 
-/* laptop */
 .ad-top .cat-laptop {
   background: linear-gradient(90deg, #22c55e, #16a34a) !important;
 }
 
-/* random */
 .ad-top .cat-random {
   background: linear-gradient(90deg, #64748b, #94a3b8) !important;
 }
 
-/* ===================== CONDITION COLORS ===================== */
 .ad-condition {
   border: none !important;
   color: #fff !important;
   font-weight: 900;
 }
 
-/* new = green */
 .ad-condition.cond-new {
   background: linear-gradient(90deg, #22c55e, #16a34a) !important;
 }
 
-/* used = gray */
 .ad-condition.cond-used {
   background: linear-gradient(90deg, #64748b, #94a3b8) !important;
 }
@@ -494,10 +439,6 @@ body {
   }
 }
 
-/* ==========================================================================
-   12) PROFILE (DASHBOARD BASE)
-   - IMPORTANT: do NOT override this again later
-   ========================================================================== */
 .profile-wrapper {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -610,9 +551,6 @@ body {
   }
 }
 
-/* ==========================================================================
-   13) DASHBOARD
-   ========================================================================== */
 .dash-section {
   width: 100%;
   margin: 18px auto 0;
@@ -764,9 +702,6 @@ body {
   }
 }
 
-/* ==========================================================================
-   14) ADS
-   ========================================================================== */
 .container-ads {
   width: 100%;
   margin: 0 auto;
@@ -871,7 +806,6 @@ body {
   height: 42px;
 }
 
-/* Add/Edit form layout */
 .ad-form-wrapper {
   width: 100%;
   max-width: 1100px;
@@ -909,7 +843,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* ===================== ADS: Wireframe horizontal card layout ===================== */
 .ads-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -925,7 +858,6 @@ body {
   overflow: hidden;
 }
 
-/* LEFT SIDE */
 .ad-left {
   flex: 1;
   min-width: 0;
@@ -934,7 +866,6 @@ body {
   gap: 14px;
 }
 
-/* top pills */
 .ad-top {
   display: flex;
   gap: 10px;
@@ -962,7 +893,6 @@ body {
   color: #0b1220;
 }
 
-/* big price like sketch */
 .ad-price {
   font-size: 2.2rem;
   font-weight: 900;
@@ -970,7 +900,6 @@ body {
   color: #0b1220;
 }
 
-/* description box */
 .ad-desc-box {
   border: 1px solid #cbd5e1;
   background: #ffffff;
@@ -1073,9 +1002,6 @@ body {
   }
 }
 
-/* ==========================================================================
-   15) ABOUT US
-   ========================================================================== */
 .about-card {
   padding: 26px;
 }

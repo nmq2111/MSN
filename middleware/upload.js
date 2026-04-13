@@ -5,7 +5,7 @@ const cloudinary = require('../config/cloudinary')
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'MSN', // change folder name if you want
+    folder: 'MSN',
     allowed_formats: ['jpg', 'jpeg', 'png', 'webp']
   }
 })

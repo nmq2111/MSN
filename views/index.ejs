@@ -4,18 +4,18 @@
   <body> 
     <%- include('./partials/_pageLoader') %>
      <%- include('./partials/_navbar.ejs') %> 
-     <!-- CLEAN GLOBAL LAYOUT --> 
+
       <div class="page"> 
         <div class="page-inner">
-           <!-- HOME CENTER -->
+
             
            <div class="home-center">
              <div class="home-wrapper">
-               <!-- HERO CARD --> 
+
                 <section class="card home-hero"> 
                   <h1 class="h1"> WHERE <span class="highlight">SELLERS</span><br /> MEET <span class="highlight">BUYERS</span>,<br /> INSTANTLY AND<br /> SEAMLESSLY </h1>
                  </section> 
-                 <% if (user) { %> <!-- CATEGORIES --> 
+                 <% if (user) { %> 
                   <section class="home-categories">
                      <a href="/Ads/categories?category=cars" class="home-category">
                        <i class="fa-solid fa-car"></i> <span>Cars</span> 
@@ -41,6 +41,5 @@
                          </div> 
                         </div> 
                       </div> 
-                      <!-- <%- include('./partials/_footer.ejs') %>  -->
                     </body> 
                     </html>

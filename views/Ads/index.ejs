@@ -9,7 +9,6 @@
     <div class="page">
       <div class="page-inner">
         <div class="container-ads">
-          <!-- HEADER -->
           <div class="ads-header">
             <h1 class="ads-title">My Ads</h1>
 
@@ -34,12 +33,10 @@
             </a>
           </div>
 
-          <!-- GRID -->
           <% if (ads && ads.length) { %>
           <div class="ads-grid" id="adsGrid">
             <% ads.forEach((ad) => { %>
             <article class="ad-card ad-card--row">
-              <!-- LEFT -->
               <div class="ad-left">
                 <div class="ad-top">
                   <span
@@ -89,7 +86,6 @@
                 </div>
               </div>
 
-              <!-- RIGHT (IMAGE) -->
               <div class="ad-right">
                 <img
                   src="<%= ad.imgUrl || '/images/handshake.png' %>"
@@ -107,6 +103,5 @@
       </div>
     </div>
 
-    <!-- <%- include('../partials/_footer.ejs') %> -->
   </body>
 </html>

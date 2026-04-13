@@ -7,7 +7,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-// Users folder storage
 const userStorage = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -16,7 +15,6 @@ const userStorage = new CloudinaryStorage({
   }
 })
 
-// Ads folder storage
 const adStorage = new CloudinaryStorage({
   cloudinary,
   params: {

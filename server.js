@@ -12,24 +12,20 @@ const passUserToView = require('./middleware/pass-user-to-view')
 const isSignedIn = require('./middleware/is-signed-in')
 const isStrongPassword = require('./middleware/isStrongPassword')
 
-// Controllers
 const userController = require('./controllers/user')
 const adsController = require('./controllers/Ads')
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 
-// View Engine Setup
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-// MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB: ${mongoose.connection.name}`)
 })
 
-// Middleware
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/images', express.static(path.join(__dirname, 'images')))
@@ -52,7 +48,6 @@ app.use(
 
 app.use(passUserToView)
 
-// Routes
 app.get('/', (req, res) => {
   if (req.session.user) {
     res.redirect(`/user/${req.session.user._id}/user`)
@@ -61,7 +56,6 @@ app.get('/', (req, res) => {
   }
 })
 
-// routes
 app.use('/user', userController)
 app.use('/Ads', adsController)
 

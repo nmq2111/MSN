@@ -2,7 +2,6 @@ module.exports = (req, res, next) => {
   try {
     const pw = req.body?.password
 
-    // If it's not a request with a password (GET, other routes), just continue
     if (!pw) return next()
 
     const ok =
@@ -16,7 +15,6 @@ module.exports = (req, res, next) => {
 
     return next()
   } catch (err) {
-    console.log(err)
     return res.status(500).send('Server error.')
   }
 }
