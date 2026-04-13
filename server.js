@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
 const expressSession = require('express-session')
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo').default
 
 const passUserToView = require('./middleware/pass-user-to-view')
 const isSignedIn = require('./middleware/is-signed-in')

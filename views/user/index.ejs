@@ -20,7 +20,7 @@
               <div class="profile-avatar-col">
                 <div class="profile-avatar-box">
                   <img
-                    src="<%= user.profile && user.profile.trim() ? user.profile : '/images/Logo.png'%>"
+                    src="<%= (user.profile && user.profile.trim() && user.profile.startsWith('http')) ? user.profile: '/images/Logo.png'%>"
                     alt="Profile Picture"
                     class="profile-avatar"
                   />
@@ -221,6 +221,6 @@
       </div>
     </div>
 
-    <%- include('../partials/_footer.ejs') %>
+    <!-- <%- include('../partials/_footer.ejs') %> -->
   </body>
 </html>

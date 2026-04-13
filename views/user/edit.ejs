@@ -103,7 +103,7 @@
           <div class="profile-avatar-col">
             <div class="profile-avatar-box">
               <img
-                src="/uploads/<%= user.profile %>"
+                src="<%= (user.profile && user.profile.trim() && user.profile.startsWith('http')) ? user.profile: '/images/Logo.png'%>"
                 alt="Profile Picture"
                 class="profile-avatar"
               />
@@ -177,8 +177,8 @@
           <div class="profile-avatar-col">
             <div class="profile-avatar-box">
               <img
-                src="/uploads/<%= user.profile %>"
-                alt="Profile"
+                src="<%= (user.profile && user.profile.trim() && user.profile.startsWith('http')) ? user.profile: '/images/Logo.png'%>"
+                alt="Profile Picture"
                 class="profile-avatar"
               />
             </div>
@@ -219,6 +219,6 @@
       </section>
     </main>
 
-    <%- include('../partials/_footer.ejs') %>
+    <!-- <%- include('../partials/_footer.ejs') %> -->
   </body>
 </html>
