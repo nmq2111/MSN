@@ -1,4 +1,4 @@
-# 🛒 MSN Bahrain 🇧🇭  
+# 🛒 MSN Bahrain  
 ### A Modern Classified Ads Marketplace
 
 ![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
