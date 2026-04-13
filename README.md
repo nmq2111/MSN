@@ -50,7 +50,7 @@ The platform focuses on:
 
 ## Live Demo
 
-🔗 [View Live Demo](https://your-live-demo-link.com)
+🔗 [View Live Demo](https://msn-bahrain.onrender.com)
 
 ---
 
