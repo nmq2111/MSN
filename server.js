@@ -32,6 +32,8 @@ app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
 
+app.set('trust proxy', 1)
+
 app.use(
   expressSession({
     secret: process.env.SESSION_SECRET || 'dev_secret_change_me',
