@@ -32,7 +32,7 @@
 ### Dashboard
 ![Home Page](./screenshots/dashborad.png)
 
-### Dashboard
+### Buyer Interface
 ![Home Page](./screenshots/Buyer-interface.png)
 
 ---
