@@ -1,78 +1,118 @@
-# MSN-BAHRAIN
+# 🛒 MSN Bahrain  
+### A Modern Classified Ads Marketplace
 
-- MSN Bahrain is an online advertising platform created to help users sell their products and facilitate connections between sellers and buyers.
+![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
+![Express](https://img.shields.io/badge/Express.js-Framework-black)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green)
+![EJS](https://img.shields.io/badge/EJS-Templating-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ---
 
-## Trello Documentation
+## 📸 UI Preview
 
-## [Trello](https://trello.com/invite/b/682467cc76713d02ef11fa3f/ATTIc093db85297ab01652d70dd45ba8160c07C0957D/my-trello-board)
+### Home Page
+![Home Page](./screenshots/landing-page.png)
+
+### Home Page (sign In)
+![Home Page](./screenshots/landing-page(signIn).png)
+
+### Add & Edit Ads
+![Home Page](./screenshots/Add&Edit-Ads.png)
+
+### Sign In
+![Home Page](./screenshots/SignIn.png)
+
+### Sign Up
+![Home Page](./screenshots/SignUp.png)
+
+### My Ads
+![Home Page](./screenshots/myAds.png)
+
+### Dashboard
+![Home Page](./screenshots/dashborad.png)
+
+### Dashboard
+![Home Page](./screenshots/Buyer-interface.png)
+
+---
+
+## Project Overview
+
+MSN Bahrain is a full-stack web-based marketplace that enables users to buy and sell products.
+
+The platform focuses on:
+- Smooth user experience  
+- Simple ad management  
+- Secure authentication system  
+
+---
+
+## Live Demo
+
+🔗 [View Live Demo](https://msn-bahrain.onrender.com)
+
+---
 
 ## Features
 
 ### Current Features
 
-- Guests are able to navigate through the different categories & view the published ads.
-- Adding to that, _seller_ can publish ads, edit & delete their ow ads.
-- In each user profile, the user is able to edit his details, upload his picture & change his password.
-
-### Future Features
-
-- We'll add the logistics users.
-- Different users authorities, as the seller will be able to assign a sell to a logistic user to deliever the product once purchased.
-- Adding an "Inspection request" where the buyer can send to the ad owner.
+- Browse ads without login  
+- User authentication (Sign up / Login / Logout)  
+- Create, edit, and delete ads  
+- Search ads by keyword  
+- User profile management  
+- Dynamic server-side rendering using EJS  
 
 ---
 
-## The Scenarios
+### 🔮 Future Features
 
-- Guest enters the website & search for specific product
-- Guest enters & view all the posted ads
-- User can create new ads
-- User can edit their own ads
-- User can delete their own ads
-
----
-
-## Main Functionality
-
-- Sign up
-- Sing in
-- sing out
-- Show all (Landing page)
-- Search by keyword
-- User Dashboard (User landing page)
-- Creating Ad
-- Edit & Update Add
-- Delete Ad
+- Logistics & delivery system  
+- Role-based users (Seller / Buyer / Logistics)  
+- Inspection request system  
+- Notifications system  
 
 ---
 
-## Entities
+## ⚙️ Tech Stack
 
-- Users
-- Ads
+| Layer        | Technology |
+|-------------|-----------|
+| Backend     | Node.js, Express.js |
+| Frontend    | EJS, CSS |
+| Database    | MongoDB |
+| Auth        | Sessions & Cookies |
 
 ---
 
-## Entity Relationship Diagram
+## System Design
 
-- Users
+### Entities
 
-  - UserID
-  - name
-  - password
-  - category
-  - ContactNo
-  - Email
+**Users**
+- UserID  
+- Name  
+- Email  
+- Password  
+- Contact Number  
 
-- Ads
+**Ads**
+- AdID  
+- Title  
+- Price  
+- Description  
+- Category  
+- Condition  
+- UserID (Reference)  
 
-  - AdsID
-  - Title
-  - Price
-  - Description
-  - Condition
-  - Category
-  - UserID
-  - Date
+---
+
+## User Flow
+
+1. Guest browses ads  
+2. User signs up / logs in  
+3. Seller creates an ad  
+4. Buyer searches and views ads  
+5. Seller manages listings  
