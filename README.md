@@ -67,23 +67,12 @@ The platform focuses on:
 
 ---
 
-### 🔮 Future Features
+### Future Features
 
 - Logistics & delivery system  
 - Role-based users (Seller / Buyer / Logistics)  
 - Inspection request system  
 - Notifications system  
-
----
-
-## ⚙️ Tech Stack
-
-| Layer        | Technology |
-|-------------|-----------|
-| Backend     | Node.js, Express.js |
-| Frontend    | EJS, CSS |
-| Database    | MongoDB |
-| Auth        | Sessions & Cookies |
 
 ---
 
@@ -107,12 +96,4 @@ The platform focuses on:
 - Condition  
 - UserID (Reference)  
 
----
 
-## User Flow
-
-1. Guest browses ads  
-2. User signs up / logs in  
-3. Seller creates an ad  
-4. Buyer searches and views ads  
-5. Seller manages listings  
